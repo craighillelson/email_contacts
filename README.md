@@ -1,2 +1,5 @@
 # contacts
- simple contact management app
+Simple Python 3.8 contact management app
+
+# requirement
+[PyInputPlus](https://pypi.org/project/PyInputPlus/)
