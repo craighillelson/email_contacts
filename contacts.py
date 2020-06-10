@@ -15,10 +15,8 @@ def open_csv_pop_dct_namedtuple_print_dct(file_name):
         Row = namedtuple('Row', headings)
         for r in f_csv:
             row = Row(*r)
-            dct[row.email] = [row.first_name, row.last_name, row.phone_number]
-
-    for key in dct.keys():
-        print(key)
+            dct[row.email] = [row.first_name, row.last_name, row.phone_number,
+                              row.state]
 
     return dct
 
@@ -43,7 +41,7 @@ def enter_contact_details():
     """Add contact details."""
     dct = {}
     while True:
-        print('\nEnter contact details or enter to stop.')
+        print('\nEnter contact details')
         print('Email')
         email = pyip.inputEmail('> ')
         if email in contacts:
@@ -56,8 +54,9 @@ def enter_contact_details():
                 print('\nPlease enter a phone number in xxx-xxx-xxxx format')
                 phone_number = prompt_user('Phone Number')
             else:
-                pass
-            dct[email] = [first_name, last_name, phone_number]
+                print('state')
+                state = pyip.inputUSState('> ')
+            dct[email] = [first_name, last_name, phone_number, state]
         print('\nenter another contact (yes or no)?')
         another = pyip.inputYesNo('> ')
         if another != 'yes':
@@ -77,19 +76,21 @@ def write_dct_to_csv(file, DCT):
     """Write dictionary to csv."""
     with open(file, 'w') as out_file:
         out_csv = csv.writer(out_file)
-        out_csv.writerow(['email', 'first_name', 'last_name', 'phone_number'])
-        for yankee, details in DCT.items():
-            keys_values = (yankee, *details)
+        out_csv.writerow(['email', 'first_name', 'last_name', 'phone_number',
+                         'state'])
+        for email, details in DCT.items():
+            keys_values = (email, *details)
             out_csv.writerow(keys_values)
 
 
 def update_user(user_update):
     """Output the entries that have been added to the database."""
     print(user_update)
-    for yankee, details in contacts_to_add.items():
-        print(f'email: {yankee}')
+    for email, details in contacts_to_add.items():
+        print(f'email: {email}')
         print(f'name: {details[0]} {details[1]}')
-        print(f'phone number: {details[2]}\n')
+        print(f'phone number: {details[2]}')
+        print(f'state: {details[3]}\n')
 
 
 contacts = open_csv_pop_dct_namedtuple_print_dct('contacts.csv')
