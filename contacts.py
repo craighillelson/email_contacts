@@ -41,10 +41,12 @@ def enter_contact_details():
     """Add contact details."""
     dct = {}
     while True:
-        print('\nEnter contact details')
+        print('\nEnter contact details or enter to quit.')
         print('Email')
-        email = pyip.inputEmail('> ')
-        if email in contacts:
+        email = pyip.inputEmail('> ', blank=True)
+        if email == '':
+            break
+        elif email in contacts:
             print('A record with this email address already exists.')
         else:
             first_name = prompt_user('First Name')
@@ -57,12 +59,6 @@ def enter_contact_details():
                 print('state')
                 state = pyip.inputUSState('> ')
             dct[email] = [first_name, last_name, phone_number, state]
-        print('\nenter another contact (yes or no)?')
-        another = pyip.inputYesNo('> ')
-        if another != 'yes':
-            break
-        else:
-            pass
 
     return dct
 
