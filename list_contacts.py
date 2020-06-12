@@ -13,7 +13,8 @@ def open_csv_pop_dct_namedtuple():
         Row = namedtuple('Row', headings)
         for r in f_csv:
             row = Row(*r)
-            dct[row.email] = [row.first_name, row.last_name, row.phone_number]
+            dct[row.email] = [row.first_name, row.last_name, row.phone_number,
+                              row.state]
 
     return dct
 
