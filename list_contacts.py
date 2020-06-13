@@ -25,11 +25,13 @@ def output_contacts(dct):
     the dictionary and print each record. If there are no records, notify the
     user that the database is empty.
     """
+    print('\n')
     if contacts:
-        for email, details in dct.items():
-            print(email, *details)
+        for i, (email, details) in enumerate(dct.items(), 1):
+            print(i, email, *details)
     else:
         print('The database is empty.')
+    print('\n')
 
 
 contacts = open_csv_pop_dct_namedtuple()
