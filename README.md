@@ -1,10 +1,10 @@
-# contacts
+# Contacts
 Simple Python 3.8 contact management app
 
-# requirement
+# Requirement
 [PyInputPlus](https://pypi.org/project/PyInputPlus/)
 
-# files
+# Files
 * contacts.csv - stores contacts
 * contacts.py - adds contacts
 * list_contacts.py - lists all contacts in contacts.csv
