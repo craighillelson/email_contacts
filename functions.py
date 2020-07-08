@@ -15,6 +15,7 @@ def add_user_input_to_csv(user_domain, lst):
     all_contacts = concat_lists(lst, contacts_to_add)
     write_lst_to_csv(all_contacts)
 
+
 def concat_lists(lst1, lst2):
     """Concatenate lists."""
     return lst1 + lst2
@@ -159,7 +160,7 @@ def prompt_user_for_prefix(a, b):
 
 
 def write_lst_to_csv(LST):
-    """Write list to csv """
+    """Write list to csv."""
     with open('contacts.csv', 'w') as out_file:
         out_csv = csv.writer(out_file)
         out_csv.writerow(['email'])
