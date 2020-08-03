@@ -11,7 +11,7 @@ from functions import (open_csv_pop_lst_namedtuple,
 
 contacts = open_csv_pop_lst_namedtuple()
 if contacts:
-    domain = get_domain('email', contacts)
+    domain = get_domain(contacts)
     domain_confirmed = prompt_user_for_domain(domain)
     add_user_input_to_csv(domain, contacts)
 else:
