@@ -21,7 +21,7 @@ def concat_lists(lst1, lst2):
     return lst1 + lst2
 
 
-def get_domain(lst1, lst2):
+def get_domain(lst2):
     """Extract the domain from an email address."""
     lst1 = lst2[0]
     return lst1.split('@')[1]
@@ -70,7 +70,7 @@ def prompt_user(dct):
     lst = []
     while True:
         print(f'\nEnter the number of corresponding members you\'d like to '
-              f'edit.')
+              f'edit or nothing to quit.')
         response = pyip.inputInt('> ', max=len(dct), blank=True)
         if response == '':
             break
@@ -146,7 +146,7 @@ def prompt_user_for_prefix(a, b):
     """Prompt user for email prefixes."""
     lst = []
     while True:
-        print('Enter the contact\'s name (or enter nothing to stop.):')
+        print('Enter the contact\'s name (or enter nothing to stop).')
         email_prefix = input('> ')
         email = email_prefix + '@' + a
         if email not in b:
@@ -164,7 +164,7 @@ def write_lst_to_csv(LST):
     with open('contacts.csv', 'w') as out_file:
         out_csv = csv.writer(out_file)
         out_csv.writerow(['email'])
-        for i in LST: # rename i to make it meaningful
+        for i in LST:
             out_csv.writerow([i])
 
     print(f'\n"contacts.csv" exported successfully')
