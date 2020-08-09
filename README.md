@@ -11,3 +11,4 @@ Simple Python 3.8 contact management app
 * edit_contacts.py - presents user with the option to edit contacts
 * list_contacts.py - lists all contacts in contacts.csv
 * menu.py - gives user options to add, delete, edit, or list contacts
+* search_contacts.py - gives user the option to search for a contact
