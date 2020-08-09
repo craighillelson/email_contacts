@@ -57,7 +57,6 @@ def output_remaining_contacts(dct, lst1):
             print(v)
             lst2.append(v)
     return lst2
-    print_return('\n')
 
 
 def prompt_user(dct):
