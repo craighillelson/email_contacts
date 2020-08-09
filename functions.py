@@ -12,13 +12,8 @@ def add_user_input_to_csv(user_domain, lst):
     contacts to a csv.
     """
     contacts_to_add = prompt_user_for_prefix(user_domain, lst)
-    all_contacts = concat_lists(lst, contacts_to_add)
+    all_contacts = lst + contacts_to_add
     write_lst_to_csv(all_contacts)
-
-
-def concat_lists(lst1, lst2):
-    """Concatenate lists."""
-    return lst1 + lst2
 
 
 def get_domain(lst2):
@@ -75,8 +70,7 @@ def prompt_user(dct):
         if response == '':
             break
         else:
-            print(dct[response])
-            edited_entry = input('> ')
+            edited_entry = input(f'Update {dct[response]}\n> ')
             dct[response] = edited_entry
             for num, email in dct.items():
                 lst.append(email)
@@ -146,7 +140,7 @@ def prompt_user_for_prefix(a, b):
     """Prompt user for email prefixes."""
     lst = []
     while True:
-        print('Enter the contact\'s name (or enter nothing to stop).')
+        print('\nEnter the contact\'s name (or enter nothing to stop).')
         email_prefix = input('> ')
         email = email_prefix + '@' + a
         if email not in b:
