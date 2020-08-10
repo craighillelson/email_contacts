@@ -4,11 +4,13 @@ import pyinputplus as pyip
 
 options = {
     1: "add_contacts.py",
-    2: "delete_contacts.py",
-    3: "edit_contacts.py",
-    4: "list_contacts.py",
-    5: "search_contacts.py"
-    }
+    2: "backup_contacts.py",
+    3: "delete_contacts.py",
+    4: "edit_contacts.py",
+    5: "list_contacts.py",
+    6: "search_contacts.py",
+    7: "setup.py",
+}
 
 
 def switch_case(argument):
