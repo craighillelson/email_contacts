@@ -16,6 +16,42 @@ def add_user_input_to_csv(user_domain, lst):
     write_lst_to_csv(all_contacts)
 
 
+def backup_contacts(destination):
+    """Make a copy of contacts."""
+    import shutil
+
+    shutil.copy('contacts.csv', destination)
+
+
+def create_timestamped_filename():
+    """Create a filename created including a timestamp."""
+    from datetime import datetime
+
+    now = datetime.now()
+    return now.strftime("%Y-%m-%d_%H:%M:%S") + "_backup.csv"
+
+
+def complete_setup(lst):
+    """
+    Tests to see if folders and files required to run the app. If required
+    folders do not exist, create them.
+    """
+    import os
+    from os import path
+
+    print("\n")
+
+    for folder in lst:
+        if path.exists(folder):
+            print(f"{folder} exists")
+        else:
+            os.mkdir(folder)
+            print(f"{folder} was created successfully")
+
+    print("\nSetup is complete.\n")
+
+
+
 def get_domain(lst2):
     """Extract the domain from an email address."""
     lst1 = lst2[0]
