@@ -1,5 +1,5 @@
 # Contacts
-Simple Python 3.8 contact management app
+Python 3.8 command line contact management app
 
 # Requirement
 [PyInputPlus](https://pypi.org/project/PyInputPlus/)
