@@ -1,6 +1,6 @@
 """
-Import a csv, present user with options to remove. Write the results to
-contacts.csv.
+Import a csv, present user with options to remove any of the contacts. Write
+the results to contacts.csv.
 """
 
 from functions import (open_csv_pop_lst_namedtuple,

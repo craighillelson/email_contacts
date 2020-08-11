@@ -1,6 +1,6 @@
 """
-Import a csv, present user with options to skip.
-Write the results to a csv.
+Import contacts.csv, present user with options to edit contacts.
+Write the results to a contacts.csv.
 """
 
 from functions import (open_csv_pop_lst_namedtuple,
