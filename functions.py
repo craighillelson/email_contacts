@@ -5,6 +5,11 @@ import pyinputplus as pyip
 from collections import namedtuple
 
 
+def add_name(prompt):
+    """Prompt user to enter a string."""
+    return pyip.inputStr(prompt)
+
+
 def add_user_input_to_csv(user_domain, lst):
     """
     Prompt user for input and add each entry to a list. Concatenate resulting
@@ -168,17 +173,17 @@ def output_contacts(lst):
         for i, (email) in enumerate(lst, 1):
             print(f'{i}. {email}')
     else:
-        print('The database is empty.\n')
+        print("contacts.csv is empty.\n")
 
 
-def prompt_user_for_prefix(a, b):
+def prompt_user_for_prefix(domain, email_addresses):
     """Prompt user for email prefixes."""
     lst = []
     while True:
         print('\nEnter the contact\'s name (or enter nothing to stop).')
         email_prefix = input('> ')
-        email = email_prefix + '@' + a
-        if email not in b:
+        email = email_prefix + '@' + domain
+        if email not in email_addresses:
             if email_prefix == '':
                 break
             lst = lst + [email]
@@ -186,6 +191,20 @@ def prompt_user_for_prefix(a, b):
             print(f'{email} is already in the list')
 
     return lst
+
+
+def write_dct_to_csv(file, DCT, HEADERS):
+    """Write dictionary to csv."""
+    import csv
+
+    with open(file, "w") as out_file:
+        out_csv = csv.writer(out_file)
+        out_csv.writerow(['email,first_name,last_name'])
+        for email, user_details in DCT.items():
+            keys_values = (email, user_details)
+            out_csv.writerow(keys_values)
+
+    print(f"{file} exported successfully")
 
 
 def write_lst_to_csv(LST):
@@ -196,4 +215,4 @@ def write_lst_to_csv(LST):
         for i in LST:
             out_csv.writerow([i])
 
-    print(f'\n"contacts.csv" exported successfully')
+    print(f"\n'contacts.csv' exported successfully")
