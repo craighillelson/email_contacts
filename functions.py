@@ -5,11 +5,6 @@ import pyinputplus as pyip
 from collections import namedtuple
 
 
-def add_name(prompt):
-    """Prompt user to enter a string."""
-    return pyip.inputStr(prompt)
-
-
 def add_user_input_to_csv(user_domain, lst):
     """
     Prompt user for input and add each entry to a list. Concatenate resulting
@@ -25,7 +20,7 @@ def backup_contacts(destination):
     """Make a copy of contacts."""
     import shutil
 
-    shutil.copy('contacts.csv', destination)
+    shutil.copy("contacts.csv", destination)
 
 
 def create_timestamped_filename():
@@ -56,11 +51,10 @@ def complete_setup(lst):
     print("\nSetup is complete.\n")
 
 
-
 def get_domain(lst2):
     """Extract the domain from an email address."""
-    lst1 = lst2[0]
-    return lst1.split('@')[1]
+    first_email_address = lst2[0]
+    return first_email_address.split("@")[1]
 
 
 def get_list_of_keys(dct):
@@ -70,7 +64,7 @@ def get_list_of_keys(dct):
 
 def output_options(dct):
     """Present user with options."""
-    print('\nContacts')
+    print("\nContacts")
     for num, email in dct.items():
         print(num, email)
 
@@ -91,12 +85,12 @@ def output_remaining_contacts(dct, lst1):
     Filter the list of original members, excluding the members the user chose to
     skip. Populate a list with the remaining members.
     """
-    print('\nremaining members')
+    print("\nremaining members")
     lst2 = []
-    for k, v in dct.items():
-        if k not in lst1:
-            print(v)
-            lst2.append(v)
+    for num, email in dct.items():
+        if num not in lst1:
+            print(email)
+            lst2.append(email)
     return lst2
 
 
@@ -104,16 +98,17 @@ def prompt_user(dct):
     """Prompt user for members to remove."""
     lst = []
     while True:
-        print(f'\nEnter the number of corresponding members you\'d like to '
-              f'edit or nothing to quit.')
-        response = pyip.inputInt('> ', max=len(dct), blank=True)
-        if response == '':
+        print(f"\nEnter the number of corresponding members you'd like to "
+              f"edit or nothing to quit.")
+        response = pyip.inputInt("> ", max=len(dct), blank=True)
+        if response == "":
             break
         else:
-            edited_entry = input(f'Update {dct[response]}\n> ')
+            edited_entry = input(f"Update {dct[response]}\n> ")
             dct[response] = edited_entry
             for num, email in dct.items():
                 lst.append(email)
+
     return lst
 
 
@@ -121,37 +116,37 @@ def prompt_user_to_remove(a):
     """Prompt user for members to remove."""
     lst = []
     while True:
-        print(f'\nEnter the number of corresponding members you\'d like to '
-              f'skip or enter nothing to stop.')
-        response = pyip.inputInt('> ', max=len(a), blank=True)
-        if response == '':
+        print(f"\nEnter the number of corresponding members you'd like to "
+              f"skip or enter nothing to stop.")
+        response = pyip.inputInt("> ", max=len(a), blank=True)
+        if response == "":
             break
         lst = lst + [response]
 
     return lst
 
 
-def prompt_user_for_domain(a):
+def prompt_user_for_domain(domain):
     """
     After extracting the domain from an email address, prompt the user to
     add more email addresses for that domain or another.
     """
     while True:
-        print(f'\nIs {a} your domain (yes or no)?')
-        answer = pyip.inputYesNo('> ')
-        if answer != 'yes':
-            a = input('What is your domain name?\n> ')
+        print(f"\nIs {domain} your domain (yes or no)?")
+        answer = pyip.inputYesNo("> ")
+        if answer != "yes":
+            domain = input("What is your domain name?\n> ")
             break
         else:
             break
 
-    return a
+    return domain
 
 
 def open_csv_pop_lst_namedtuple():
     """Populate a dictionary with the contents of a csv."""
     lst = []
-    with open('contacts.csv') as f:
+    with open("contacts.csv") as f:
         f_csv = csv.reader(f)
         headings = next(f_csv)
         Row = namedtuple('Row', headings)
@@ -169,9 +164,9 @@ def output_contacts(lst):
     user that the database is empty.
     """
     if lst:
-        print('\nContacts')
+        print("\nContacts")
         for i, (email) in enumerate(lst, 1):
-            print(f'{i}. {email}')
+            print(f"{i}. {email}")
     else:
         print("contacts.csv is empty.\n")
 
@@ -180,15 +175,15 @@ def prompt_user_for_prefix(domain, email_addresses):
     """Prompt user for email prefixes."""
     lst = []
     while True:
-        print('\nEnter the contact\'s name (or enter nothing to stop).')
-        email_prefix = input('> ')
-        email = email_prefix + '@' + domain
+        print("\nEnter the contact's name (or enter nothing to stop).")
+        email_prefix = input("> ")
+        email = email_prefix + "@" + domain
         if email not in email_addresses:
-            if email_prefix == '':
+            if email_prefix == "":
                 break
             lst = lst + [email]
         else:
-            print(f'{email} is already in the list')
+            print(f"{email} is already in the list")
 
     return lst
 
@@ -199,7 +194,7 @@ def write_dct_to_csv(file, DCT, HEADERS):
 
     with open(file, "w") as out_file:
         out_csv = csv.writer(out_file)
-        out_csv.writerow(['email,first_name,last_name'])
+        out_csv.writerow(["email,first_name,last_name"])
         for email, user_details in DCT.items():
             keys_values = (email, user_details)
             out_csv.writerow(keys_values)
@@ -207,12 +202,12 @@ def write_dct_to_csv(file, DCT, HEADERS):
     print(f"{file} exported successfully")
 
 
-def write_lst_to_csv(LST):
+def write_lst_to_csv(contacts):
     """Write list to csv."""
-    with open('contacts.csv', 'w') as out_file:
+    with open("contacts.csv", "w") as out_file:
         out_csv = csv.writer(out_file)
-        out_csv.writerow(['email'])
-        for i in LST:
-            out_csv.writerow([i])
+        out_csv.writerow(["email"])
+        for email in contacts:
+            out_csv.writerow([email])
 
     print(f"\n'contacts.csv' exported successfully")
