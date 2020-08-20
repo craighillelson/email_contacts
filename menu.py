@@ -15,7 +15,7 @@ options = {
 
 def switch_case(argument):
     """Switch case statement."""
-    options
+    # options
     return options.get(argument, 'nothing')
 
 
