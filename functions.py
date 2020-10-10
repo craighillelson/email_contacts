@@ -106,7 +106,7 @@ def prompt_user(dct):
         else:
             edited_entry = input(f"Update {dct[response]}\n> ")
             dct[response] = edited_entry
-            for num, email in dct.items():
+            for email in dct.items():
                 lst.append(email)
 
     return lst
