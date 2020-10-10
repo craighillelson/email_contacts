@@ -98,8 +98,8 @@ def prompt_user(dct):
     """Prompt user for members to remove."""
     lst = []
     while True:
-        print(f"\nEnter the number of corresponding members you'd like to "
-              f"edit or nothing to quit.")
+        print("\nEnter the number of corresponding members you'd like to "
+              "edit or nothing to quit.")
         response = pyip.inputInt("> ", max=len(dct), blank=True)
         if response == "":
             break
