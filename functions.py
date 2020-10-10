@@ -1,7 +1,11 @@
 """Functions."""
 
 import csv
+import os
+from os import path
+import shutil
 from collections import namedtuple
+from datetime import datetime
 import pyinputplus as pyip
 
 
@@ -18,14 +22,12 @@ def add_user_input_to_csv(user_domain, lst):
 
 def backup_contacts(destination):
     """Make a copy of contacts."""
-    import shutil
 
     shutil.copy("contacts.csv", destination)
 
 
 def create_timestamped_filename():
     """Create a filename created including a timestamp."""
-    from datetime import datetime
 
     now = datetime.now()
     return now.strftime("%Y-%m-%d_%H:%M:%S") + "_backup.csv"
@@ -36,8 +38,6 @@ def complete_setup(lst):
     Tests to see if folders and files required to run the app. If required
     folders do not exist, create them.
     """
-    import os
-    from os import path
 
     print("\n")
 
@@ -136,7 +136,6 @@ def prompt_user_for_domain(domain):
         answer = pyip.inputYesNo("> ")
         if answer != "yes":
             domain = input("What is your domain name?\n> ")
-            break
         else:
             break
 
@@ -190,7 +189,6 @@ def prompt_user_for_prefix(domain, email_addresses):
 
 def write_dct_to_csv(file, DCT):
     """Write dictionary to csv."""
-    import csv
 
     with open(file, "w") as out_file:
         out_csv = csv.writer(out_file)
