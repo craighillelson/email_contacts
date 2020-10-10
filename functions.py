@@ -1,8 +1,8 @@
 """Functions."""
 
 import csv
-import pyinputplus as pyip
 from collections import namedtuple
+import pyinputplus as pyip
 
 
 def add_user_input_to_csv(user_domain, lst):
