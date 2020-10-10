@@ -116,8 +116,8 @@ def prompt_user_to_remove(a):
     """Prompt user for members to remove."""
     lst = []
     while True:
-        print(f"\nEnter the number of corresponding members you'd like to "
-              f"skip or enter nothing to stop.")
+        print("\nEnter the number of corresponding members you'd like to "
+              "skip or enter nothing to stop.")
         response = pyip.inputInt("> ", max=len(a), blank=True)
         if response == "":
             break
