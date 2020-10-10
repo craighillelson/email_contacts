@@ -210,4 +210,4 @@ def write_lst_to_csv(contacts):
         for email in contacts:
             out_csv.writerow([email])
 
-    print(f"\n'contacts.csv' exported successfully")
+    print("\n'contacts.csv' exported successfully")
