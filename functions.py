@@ -188,7 +188,7 @@ def prompt_user_for_prefix(domain, email_addresses):
     return lst
 
 
-def write_dct_to_csv(file, DCT, HEADERS):
+def write_dct_to_csv(file, DCT):
     """Write dictionary to csv."""
     import csv
 
